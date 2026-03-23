@@ -1,0 +1,7 @@
+../Core/Src/SPI.c:11:5:__io_putchar	1
+../Core/Src/SPI.c:17:6:disable_slave	1
+../Core/Src/SPI.c:22:6:enable_slave	1
+../Core/Src/SPI.c:28:20:spi_write	1
+../Core/Src/SPI.c:45:19:spi_read	2
+../Core/Src/SPI.c:60:6:HAL_SPI_TxCpltCallback	2
+../Core/Src/SPI.c:69:6:HAL_SPI_TxRxCpltCallback	2
