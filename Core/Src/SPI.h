@@ -39,6 +39,6 @@ extern uint16_t data_out;
 
 
 HAL_StatusTypeDef  spi_write(uint8_t* message);
-HAL_StatusTypeDef spi_read(uint8_t* message);
+HAL_StatusTypeDef spi_read(uint8_t* command);
 
 #endif /* __MAIN_H */

@@ -28,8 +28,13 @@
 #define MSB_uint16_mask 0xFF00
 #define LSB_uint16_mask 0xFF
 
-#define WREG_CMD 0b011;
-#define RREG_CMD 0b101;
+#define WREG_CMD 0b011
+#define RREG_CMD 0b101
+#define NULL_CMD 0
+
+void ADS131M04_write(uint8_t address, uint16_t value);
+void ADS131M04_read(uint8_t address);
+
 
 // ---------------------------
 // ADS131M04 Register Addresses

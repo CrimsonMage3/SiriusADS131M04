@@ -3,5 +3,5 @@
 ../Core/Src/SPI.c:22:6:enable_slave	8	static
 ../Core/Src/SPI.c:28:20:spi_write	24	static
 ../Core/Src/SPI.c:45:19:spi_read	24	static
-../Core/Src/SPI.c:60:6:HAL_SPI_TxCpltCallback	16	static
-../Core/Src/SPI.c:69:6:HAL_SPI_TxRxCpltCallback	16	static
+../Core/Src/SPI.c:64:6:HAL_SPI_TxCpltCallback	16	static
+../Core/Src/SPI.c:73:6:HAL_SPI_TxRxCpltCallback	16	static

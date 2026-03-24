@@ -42,15 +42,19 @@ HAL_StatusTypeDef  spi_write(uint8_t* message){
 }
 
 
-HAL_StatusTypeDef spi_read(uint8_t* message){
+HAL_StatusTypeDef spi_read(uint8_t* command)
+{
+    // Transaction 1: send command, discard RX (it's the previous response)
+    HAL_StatusTypeDef status = HAL_SPI_TransmitReceive_IT(&hspi1, command, data_out_buffer, LENGTH_READ);
+    while(flag_read_done == 0);
+    flag_read_done = 0;
 
+    // Transaction 2: send NULL, receive actual command response
+    uint8_t null_frame[LENGTH_READ] = {0};
+    status = HAL_SPI_TransmitReceive_IT(&hspi1, null_frame, data_out_buffer, LENGTH_READ);
+    while(flag_read_done == 0);
+    flag_read_done = 0;
 
-	HAL_StatusTypeDef status = HAL_SPI_TransmitReceive_IT(&hspi1, message, data_out_buffer, LENGTH_READ);
-
-	while(flag_read_done == 0);
-	flag_read_done = 0;
-
-    // Start non-blocking transmit+receive
     return status;
 }
 

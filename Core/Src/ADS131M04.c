@@ -3,12 +3,12 @@
 
 
 
-typedef union {
+typedef union { //Standard format of command for writing or reading a register
 	uint16_t COMMAND;
 	struct{
-		uint8_t REGISTER_NUMBER : 7;
-		uint8_t ADDRESS : 6;
-		uint8_t CMD : 3;
+		uint16_t REGISTER_NUMBER : 7;
+		uint16_t ADDRESS : 6;
+		uint16_t CMD : 3;
 	}field;
 	struct{
 			uint8_t LSB;
@@ -18,7 +18,7 @@ typedef union {
 
 
 
-void ADS131M04_write(uint8_t address, uint16_t value){
+void ADS131M04_write_register(uint8_t address, uint16_t value){ //Writing directly into a singular register
 
 	RW_REG WREG;
 
@@ -36,7 +36,7 @@ void ADS131M04_write(uint8_t address, uint16_t value){
 
 }
 
-void ADS131M04_read(uint8_t address){
+void ADS131M04_read_register(uint8_t address){ //Reading a specific register, only the first word back is usefull the rest are the adcs channel values
 
 	RW_REG RREG;
 
@@ -52,7 +52,11 @@ void ADS131M04_read(uint8_t address){
 
 }
 
+void ADS131M04_get_data(){ //Sending the dummy command NULL (0b00000000) to read back the adc channels value
 
+	spi_read(NULL_CMD);
+
+}
 
 
 
